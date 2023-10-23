@@ -1,0 +1,7 @@
+package frc.robot;
+
+public class JoysticksConstants {
+    public static double deadBand = 0.08;
+    public static int driverPort = 0;
+    public static int operatorPort = 1;
+}
