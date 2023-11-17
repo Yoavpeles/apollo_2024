@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
@@ -38,6 +39,13 @@ _taolnConfig.Slot0.kP = Constants.Manipulator.kP;
 
 m_talonFX.getConfigurator().apply(_taolnConfig, 0.050);
   
+}
+
+public void setState(ManipulatorState state) {
+    if (state == ManipulatorState.OFF)
+      m_talonFX.setControl(new DutyCycleOut(0));
+    else
+        setTargetRPM(state.rpm);
 }
 
 private void setTargetRPM(double rpm) {
