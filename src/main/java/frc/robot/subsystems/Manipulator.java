@@ -15,8 +15,19 @@ public class Manipulator extends SubsystemBase {
   TalonFXConfiguration _taolnConfig = new TalonFXConfiguration();
   TalonFX m_talonFX;
  
+  public enum ManipulatorState {
+    COLLECT(Constants.Manipulator.collectRPM),
+    SHOOT(Constants.Manipulator.shootRPM),
+    SHOOTLOW(Constants.Manipulator.shootLowRPM),
+    KEEPIN(Constants.Manipulator.keepInRPM),
+    OFF(0);
 
- 
+    public final double rpm;
+
+    private ManipulatorState(double rpm) {
+        this.rpm = rpm;
+    }
+  }
 
   public Manipulator() {
     this.m_talonFX = new TalonFX(Constants.Manipulator.followerId);
