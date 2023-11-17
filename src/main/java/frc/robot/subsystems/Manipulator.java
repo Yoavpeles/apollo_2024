@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -24,13 +25,12 @@ public class Manipulator extends SubsystemBase {
 _taolnConfig.Slot0.kV = Constants.Manipulator.kF;
 _taolnConfig.Slot0.kP = Constants.Manipulator.kP;
 
-
- 
 m_talonFX.getConfigurator().apply(_taolnConfig, 0.050);
   
+}
 
- 
-  
+private void setTargetRPM(double rpm) {
+  m_talonFX.setControl(new VelocityVoltage (rpm / Constants.Manipulator.kVelocityConversionFactor).withSlot(0));
 
 }
 }
