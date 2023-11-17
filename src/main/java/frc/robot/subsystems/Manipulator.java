@@ -33,4 +33,10 @@ private void setTargetRPM(double rpm) {
   m_talonFX.setControl(new VelocityVoltage (rpm / Constants.Manipulator.kVelocityConversionFactor).withSlot(0));
 
 }
+
+ private double getTargetRPM() {
+        return m_talonFX.getClosedLoopReference().getValue() *
+                Constants.Manipulator.kVelocityConversionFactor;
+    }
+
 }
