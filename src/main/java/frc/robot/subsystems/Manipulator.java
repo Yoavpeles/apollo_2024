@@ -58,4 +58,9 @@ private void setTargetRPM(double rpm) {
                 Constants.Manipulator.kVelocityConversionFactor;
     }
 
+    private double getRPM() {
+      return m_talonFX.getRotorVelocity().getValue() *
+              Constants.Manipulator.kVelocityConversionFactor;
+  }
+
 }
