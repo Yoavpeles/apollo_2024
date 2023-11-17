@@ -9,6 +9,7 @@ import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -62,5 +63,19 @@ private void setTargetRPM(double rpm) {
       return m_talonFX.getRotorVelocity().getValue() *
               Constants.Manipulator.kVelocityConversionFactor;
   }
+
+
+    private void updateConfig() {
+      _taolnConfig.Slot0.kV = SmartDashboard.getNumber(
+              "Manipulator kF",
+              Constants.Manipulator.kF);
+      _taolnConfig.Slot0.kP = SmartDashboard.getNumber(
+              "Manipulator kP",
+              Constants.Manipulator.kP);
+
+  
+
+m_talonFX.getConfigurator().apply(_taolnConfig, 0.050);  }
+
 
 }
